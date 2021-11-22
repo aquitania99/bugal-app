@@ -1,0 +1,17 @@
+-r ./base.txt
+
+# Debugging
+ipdb>=0.13.2,<0.14.0
+
+# Tools
+django-extensions>=2.2.9,<3.0.0
+
+# Testing
+mypy==0.780
+pytest>=5.4.3,<5.5.0
+pytest-sugar>=0.9.3,<1.0.0
+pytest-django>=3.9.0,<4.0.0
+factory-boy>=2.12.0,<2.13.0
+
+# Code quality
+flake8>=3.8.3,<3.9.0

@@ -1,0 +1,38 @@
+language: python
+python: 
+  - "3.7"
+
+
+services:
+  - docker
+
+env:
+  - POSTGRES_HOST=postgres
+  - POSTGRES_PORT=5432
+  - POSTGRES_DB=bugal
+  - POSTGRES_USER=sBLRWyyPsInwHftmHAWmYJURGWBGFpLs
+  - POSTGRES_PASSWORD=tuXL3XSF8O7tsGrcGHoMos4tVNtL3tnrRshSCZokGnIfk4ArDyzaa297k2WgQPSL
+  - REDIS_URL=redis://redis:6379/0
+  - CELERY_FLOWER_USER=AkSCzUUkrubMopHkMlHHIiFnUzKhIidG
+  - CELERY_FLOWER_PASSWORD=jspxQGdwrs9VbGLmn5FmXRAGqNt5D6osRgqggNJl1JgcdcCYZdCf7Ch0jcgG0nH7
+
+
+before_script: 
+  - pip install docker-compose
+  # - mkdir -p "/home/travis/build/bugal-saas/backend/.envs/.local/""
+  # - printf "# Redis\nREDIS_URL=redis://redis:6379/0\n# Flower\nCELERY_FLOWER_USER=AkSCzUUkrubMopHkMlHHIiFnUzKhIidG\nCELERY_FLOWER_PASSWORD=jspxQGdwrs9VbGLmn5FmXRAGqNt5D6osRgqggNJl1JgcdcCYZdCf7Ch0jcgG0nH7" > .django
+  # - printf "# PostgreSQL\nPOSTGRES_HOST=postgres\nPOSTGRES_PORT=5432\nPOSTGRES_DB=bugal\nPOSTGRES_USER=sBLRWyyPsInwHftmHAWmYJURGWBGFpLs\nPOSTGRES_PASSWORD=tuXL3XSF8O7tsGrcGHoMos4tVNtL3tnrRshSCZokGnIfk4ArDyzaa297k2WgQPSL" > .postgres
+
+
+script:
+  - docker-compose -f local.yml run --rm django sh -c "python manage.py test"
+
+
+notifications:
+  slack: bugalsaas:1UZVECPAjsqMQDhNo3TzwI7f
+
+  email:
+    recipients:
+      - "sergio@akela.solutions"
+    on_success: never # default: change
+    on_failure: always # default: always
