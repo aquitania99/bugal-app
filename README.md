@@ -25,8 +25,9 @@
 ### Execute Django server to visualize in browser
 
 1. `docker-compose up` or `docker-compose -f local.yml up` Executes `python manage.py runserver 0.0.0.0:8000"`
-   ..\* Open browser and go to `http://localhost:8000`
-   ..\* To access the admin dashboard go to `http://localhost:8000/admin`
+   ..\* Open browser and go to `http://localhost`
+
+   ..\* To access the admin dashboard go to `http://localhost/admin`
 
 ## Docker commands
 
